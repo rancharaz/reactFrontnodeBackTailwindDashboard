@@ -1,0 +1,91 @@
+h1 {
+    @apply  text-2xl font-medium
+}
+.menuTop {
+    @apply  mx-auto  flex justify-between bg-blue-900  items-center h-12 px-6  
+}
+.menuTop .logo {
+    @apply text-white cursor-pointer uppercase
+}
+.menuTop ul a {
+    @apply pr-5 hover:text-gray-400 duration-200 text-white
+}
+.footer {
+    @apply  w-full flex bg-blue-900 text-white uppercase h-12 mx-auto absolute  bottom-0  text-center items-center justify-center
+} 
+.logo {
+    @apply mr-10
+}
+
+/* register */
+.register {
+    @apply mx-auto container text-center  justify-center items-center flex mt-32  text-white
+}
+.register h1 {
+    @apply mt-5
+}
+form {
+    @apply bg-blue-900 w-[500px] h-56 rounded-md
+}
+.form-input {
+    @apply flex text-center justify-center m-1 
+}
+.input {
+    @apply ml-2 outline-none text-black pl-1
+}
+
+.btn {
+    @apply bg-black p-3 rounded-md m-4 hover:bg-slate-500 hover:text-white duration-300
+}
+
+/* Login  */
+.login{
+    @apply mx-auto container text-center  justify-center items-center flex mt-32  text-white
+
+}
+.login h1 {
+    @apply mt-5
+}
+
+/* add product */
+.add-product{
+    @apply container mx-auto text-center justify-center items-center flex mt-32
+}
+
+.add-product h1{
+    @apply text-white mt-4
+}
+.add-product form {
+    @apply bg-blue-900 w-[500px] h-[100%] rounded-md
+
+}
+.add-product button {
+    @apply bg-black p-3 text-white rounded-md m-4 hover:bg-slate-500 hover:text-white duration-300
+
+}
+span  {
+    @apply text-red-500
+}
+/* product list */
+.btn-delete {
+    @apply bg-red-700 p-2 rounded-md hover:bg-red-500 duration-300
+}
+/* search bar */
+.label-search{
+    @apply mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white
+}
+.search-bar {
+    @apply relative container mx-auto 
+}
+.search-bar-head {
+    @apply absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none
+}
+.search-bar-icon {
+    @apply w-4 h-4 text-gray-500 dark:text-gray-400
+}
+.search-bar-input {
+    @apply block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none
+}
+.search-bar-submit {
+    @apply text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+}
