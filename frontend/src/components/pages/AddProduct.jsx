@@ -30,17 +30,18 @@ const AddProduct = () => {
         let result = await fetch("http://localhost:8080/api/add-product", {
             method: "POST",
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
-                'Access-Control-Allow-Methods': '*',
+                "authorization": `brearer ${JSON.parse(localStorage.getItem("token"))}`,/* auth token */
                 "Content-Type": "application/json"
-            },
+              },
             body: JSON.stringify({ name, price, category, company, userId })/* pass data post to string */
         })
         result = await result.json();/* reset to json */
         
         /* once added go to homepage */
-        navigate("/")
+        if (result) {
+            navigate("/")
+        }
+        
     }
 
     return (

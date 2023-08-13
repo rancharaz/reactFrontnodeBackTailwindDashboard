@@ -2,7 +2,6 @@ const Product = require("../models/ProductModel");/* model for products */
 
 /* business logic structure */
 
-
 /* add product function logic */
 exports.addProduct = async (req, res) => {
     let product = new Product(req.body); /* get data store here */

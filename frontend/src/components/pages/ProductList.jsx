@@ -13,7 +13,12 @@ const ProductList = () => {
 
   /* create function get all products show it useEffect */
   const getProducts = async () => {
-    const result = await fetch("http://localhost:8080/api/product");
+    const result = await fetch("http://localhost:8080/api/product", {
+      /* adding token  */
+      headers: {
+        "authorization": `brearer ${JSON.parse(localStorage.getItem("token"))}`
+      }
+    });
     const allProducts = await result.json();
     setProduct(allProducts); /* all product in products useState variable */
     
@@ -22,7 +27,10 @@ const ProductList = () => {
   /* delete product function */
   const deleteProduct = async (id) => {
     let result = await fetch(`http://localhost:8080/api/product/${id}`,{
-      method: "delete"
+      method: "delete",
+      headers: {
+        "authorization": `brearer ${JSON.parse(localStorage.getItem("token"))}`
+      }
     });
     result = await result.json();
     if(result){
@@ -36,7 +44,12 @@ const ProductList = () => {
     let key =  e.target.value; /* keyword is the value on input */
     /* if there is value inside the input field show data being search else show all data */
     if (key) {
-      let result = await fetch(`http://localhost:8080/api/search/${key}`); /* search keyword */
+      let result = await fetch(`http://localhost:8080/api/search/${key}`, {
+        /* header for auth token and permission */
+        headers: {
+          "authorization": `brearer ${JSON.parse(localStorage.getItem("token"))}`
+        }
+      }); /* search keyword */
       result = await result.json();
       /* if result show */
       if(result){

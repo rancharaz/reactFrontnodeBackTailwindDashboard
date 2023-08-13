@@ -18,12 +18,17 @@ const UpdateProduct = () => {
   /* lifecycle */
   useEffect(() => {
     getProductDetails();
+    // eslint-disable-next-line
   }, [])
 
 
   /* get product to show which one is being updated  */
   const getProductDetails = async () => {
-    let result = await fetch(`http://localhost:8080/api/product/${params.id}`);
+    let result = await fetch(`http://localhost:8080/api/product/${params.id}`, {
+      headers: {
+        "authorization": `brearer ${JSON.parse(localStorage.getItem("token"))}` /* auth token */
+      }
+    });
     result = await result.json(); /* data inside result variable */
 
     /* insert into var in useState hook part / note that it will be in the value part in form */
@@ -35,21 +40,30 @@ const UpdateProduct = () => {
   
   /* function to update products  */
   const handleupdate = async () => {
+    let data = { name, price, category, company }
+
     /* get product by id */
     let result = await fetch(`http://localhost:8080/api/product/${params.id}`, {
       method: "PUT", /* put method for update */
-      body: JSON.stringify({ name, price, category, company }), /* body for data */
+      body: JSON.stringify(data),
       headers: {
+        /* adding bearer to token to adjust to backend */
+        authorization: `brearer ${JSON.parse(localStorage.getItem('token'))}`,
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
         'Access-Control-Allow-Methods': '*',
         "Content-Type": "application/json"
-      }
+    },
+    }).catch(function(error) {
+      console.log(error.message)
     })
     result = await result.json();
-    console.log(result);
+    
     /* once update go to homepage */
-    navigate("/")
+    if(result){
+      navigate("/")
+    }
+    
   }
 
 

@@ -20,6 +20,7 @@ const SignUp = () => {
             navigate("/")
         }
     })
+    
 /* signup function */
     const signup = async () => {
         let result = await fetch('http://localhost:8080/api/register/', { /* api url */
@@ -34,7 +35,9 @@ const SignUp = () => {
         })
         result = await result.json();/* return to json */
         console.log(result);
-        localStorage.setItem("user", JSON.stringify(result))/* pass data to localstorage */
+        localStorage.setItem("user", JSON.stringify(result.result))/* pass data to localstorage */
+        localStorage.setItem("token", JSON.stringify(result.auth))/* pass token to localstorage */
+
         /* navigate to homepage once done signup */
         if(result){
             navigate("/")

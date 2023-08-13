@@ -26,8 +26,10 @@ const Login = () => {
         result = await result.json();/* get data to json */
         console.warn(result);
         /* if data true */
-        if(result.name){
-            localStorage.setItem("user", JSON.stringify(result));
+        if(result.auth){
+            localStorage.setItem("user", JSON.stringify(result.user)); /* user is in result */
+            localStorage.setItem("token", JSON.stringify(result.auth)); /* getting the token from backend */
+
             navigate("/")
         } else {
             alert("Please enter correct details")
